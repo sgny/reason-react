@@ -4,7 +4,12 @@
   an issue! */
 {
   "name" : "reason-react",
-  "sources": "src",
+  "sources": [
+  	{
+	  	"dir": "src",
+	  	"public": ["React", "ReactDOMRe", "ReactDOMServerRe", "ReactEvent", "ReactEventRe", "ReasonReact", "ReasonReactCompat", "ReasonReactOptimizedCreateClass", "ReasonReactRouter"]
+  	}
+  ],
   "refmt": 3,
   "bsc-flags": ["-bs-no-version-header"]
 }
