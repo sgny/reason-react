@@ -1122,6 +1122,115 @@ type domProps = {
   suppressContentEditableWarning: bool,
 };
 
+type ariaProps;
+[@bs.obj] external ariaProps: unit => ariaProps;
+
+[@bs.set_index]
+external ariaCurrent:
+  (
+    ariaProps,
+    [@bs.as "aria-current"] _,
+    [@bs.string] [
+      | `page
+      | `step
+      | `location
+      | `date
+      | `time
+      | [@bs.as "true"] `_true
+    ]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaInvalid:
+  (
+    ariaProps,
+    [@bs.as "aria-invalid"] _,
+    [@bs.string] [
+      | `grammar
+      | `spelling
+      | [@bs.as "false"] `_false
+      | [@bs.as "true"] `_true
+    ]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaAutocomplete:
+  (
+    ariaProps,
+    [@bs.as "aria-autocomplete"] _,
+    [@bs.string] [ | `inline | `list | `both | `none]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaChecked:
+  (
+    ariaProps,
+    [@bs.as "aria-checked"] _,
+    [@bs.string] [
+      | `mixed
+      | [@bs.as "false"] `_false
+      | [@bs.as "true"] `_true
+    ]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaHaspopup:
+  (
+    ariaProps,
+    [@bs.as "aria-haspopup"] _,
+    [@bs.string] [
+      | `menu
+      | `listbox
+      | `tree
+      | `grid
+      | `dialog
+      | [@bs.as "false"] `_false
+      | [@bs.as "true"] `_true
+    ]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaOrientation:
+  (
+    ariaProps,
+    [@bs.as "aria-orientation"] _,
+    [@bs.string] [ | `horizontal | `vertical | `undefined]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaPressed:
+  (
+    ariaProps,
+    [@bs.as "aria-pressed"] _,
+    [@bs.string] [
+      | `mixed
+      | [@bs.as "false"] `_false
+      | [@bs.as "true"] `_true
+    ]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaLive:
+  (
+    ariaProps,
+    [@bs.as "aria-live"] _,
+    [@bs.string] [ | `off | `polite | `assertive | `rude]
+  ) =>
+  unit;
+[@bs.set_index]
+external ariaDropeffect:
+  (
+    ariaProps,
+    [@bs.as "aria-dropeffect"] _,
+    [@bs.string] [ | `copy | `move | `link | `execute | `popup | `none]
+  ) =>
+  unit;
+
+[@bs.val]
+external combineProps:
+  ([@bs.as {json|{}|json}] _, domProps, ariaProps) => domProps =
+  "Object.assign";
+
 [@bs.splice] [@bs.module "react"]
 external createDOMElementVariadic:
   (string, ~props: domProps=?, array(React.element)) => React.element =
